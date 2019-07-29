@@ -1,21 +1,25 @@
-// the same code as the scheme function
-function remove(list, item) {
-    if (!list) {
-        return [];
+const numbers = [1, 2, 8, 5, 4, 10, 23, 14, 47];
+
+const lessThanOr5 = x => x >= 10;
+const greaterThanOr30 = x => x <= 30;
+
+const filter = func => items => items.filter(func);
+
+const compose = (...funcs) => item => {
+    let result = funcs.pop()(item);
+
+    while (funcs.length > 0) {
+        result = funcs.pop()(result);
     }
 
-    // this is the same as writing:
-    // const first = list[0];
-    // const rest = list.slice(1);
-    const [first, ...rest] = list;
+    return result;
+};
 
-    if (first === item) {
-        return rest;
-    } else {
-        return [first].concat(remove(rest, item));
-    }
-}
+const filterNumbers = compose(
+    filter(greaterThanOr30),
+    filter(lessThanOr5)
+);
 
-const list = [1, 2, 3, 4];
-remove(list, 3); // => [1, 2, 4]
-console.log(list); // => [1, 2, 3, 4]
+const filtered = filterNumbers(numbers);
+
+console.log('filtered', filtered);
