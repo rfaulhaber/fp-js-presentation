@@ -1,7 +1,7 @@
 const numbers = [1, 2, 8, 5, 4, 10, 23, 14, 47];
 
-const lessThanOr5 = x => x >= 10;
-const greaterThanOr30 = x => x <= 30;
+const greaterThanOr10 = x => x >= 10;
+const lessThanOr30 = x => x <= 30;
 
 const filter = func => items => items.filter(func);
 
@@ -22,4 +22,4 @@ const filterNumbers = compose(
 
 const filtered = filterNumbers(numbers);
 
-console.log('filtered', filtered);
+console.log(filtered); // => [ 10, 23, 14 ]

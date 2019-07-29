@@ -4,7 +4,7 @@ function removeNumbers() {
     for (let i = 0; i < numbers.length; i++) {
         let num = numbers[i];
 
-        if (num >= 10 && num <= 30) {
+        if (num <= 10 || num >= 30) {
             numbers.splice(i, 1);
         }
     }
@@ -12,4 +12,4 @@ function removeNumbers() {
 
 removeNumbers();
 
-console.log(numbers); // => [ 1, 2, 8, 5, 4, 23, 47 ]
+console.log(numbers); // => [ 2, 5, 10, 23, 14 ]
