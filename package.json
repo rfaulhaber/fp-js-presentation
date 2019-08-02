@@ -1,0 +1,10 @@
+{
+	"name": "fp-js",
+	"version": "1.0.0",
+	"description": "Code used in my presentation, Functional Programming in JavaScript.",
+	"main": "index.js",
+	"repository": "git@github.com:rfaulhaber/fp-in-js-pres.git",
+	"author": "Ryan Faulhaber <rfaulhaber@acumensolutions.com>",
+	"license": "UNLICENSED",
+	"private": true
+}
