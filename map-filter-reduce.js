@@ -5,8 +5,7 @@ const objects = [
     { id: '3', name: 'Alice', birthday: new Date(1989, 0, 1) }
 ];
 
-// note the destructuring syntax! we're just plucking the 'birthday' field!
-const age = ({ birthday }) => new Date().getFullYear() - birthday.getFullYear();
+const age = obj => new Date().getFullYear() - obj.birthday.getFullYear();
 
 const isCapricorn = obj => {
     const { birthday } = obj;
@@ -16,15 +15,14 @@ const isCapricorn = obj => {
     return (month === 11 && day >= 22) || (month === 0 && day <= 20);
 };
 
-// equivalent to:
-// function objToId(obj) {
-// 	return obj.id;
-// }
 const ids = objects.map(obj => obj.id);
-console.log(ids);
+console.log(ids); // => [ '1', '2', '3' ]
 
 const ages = objects.map(age);
-console.log(ages);
+console.log(ages); // => [ 27, 24, 30 ]
 
 const capricorns = objects.filter(isCapricorn).map(obj => obj.name);
-console.log(capricorns);
+console.log(capricorns); // => [ 'Ryan', 'Alice' ]
+
+const averageAge = ages.reduce((ages, age) => ages + age) / objects.length;
+console.log(averageAge); // => 27
