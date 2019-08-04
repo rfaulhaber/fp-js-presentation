@@ -1,14 +1,14 @@
-function add(x) {
+const add = (x, y) => x + y;
+
+const numbers = [1, 2, 3, 4, 5];
+
+function partialAdd(x) {
 	return function(y) {
-		return x + y;
+		return add(x, y);
 	};
 }
 
-const addArrow = x => y => x + y;
+const partialAddArrow = x => y => x + y;
 
-add(2)(3);
-// => 5
-
-const add10 = add(10);
-add10(2);
-// => 12
+const add10 = partialAdd(10);
+add10(2); // => 12

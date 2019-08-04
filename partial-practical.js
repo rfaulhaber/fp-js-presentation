@@ -1,19 +1,21 @@
 const button = document.getElementById('button');
 
-button.addEventListener('click', function(event) {
-    console.log('I was clicked but I have no context!');
-});
+// button.addEventListener('click', updateText('hello world', ???));
 
-function changeTextOnClickIdeal(text, event) {
-    event.target.innerText = text;
+function updateText(text, event) {
+	event.target.innerText = text;
 }
 
-function changeTextOnClick(text) {
-    return function(event) {
-        event.target.innerText = text;
-    };
+const updateTextPartial = partial(updateText, 'hello world');
+
+button.addEventListener('click', updateTextPartial);
+
+function updateText(text) {
+	return function(event) {
+		event.target.innerText = text;
+	};
 }
 
-// .. elsewhere
-
-document.addEventListener('click', changeTextOnClick('hello!'));
+const updateTextArrow = text => event => {
+	event.target.innerText = text;
+};
