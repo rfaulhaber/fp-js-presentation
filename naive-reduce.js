@@ -1,6 +1,5 @@
 // JS calls it "reduce" but the FP world calls it "fold"
-// note the destructuring syntax! we're just plucking the 'birthday' field!
-const fold = (values, reducer, initialValue) => {
+const reduce = (values, reducer, initialValue) => {
     // we don't want to mutate the array so we copy it
     let newValues = values.slice();
     let result = initialValue || newValues.shift();
