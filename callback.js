@@ -1,12 +1,12 @@
-const longRunningEvent = callback => {
-	setTimeout(() => {
-		callback('done');
+function delayByTwoSeconds(callback) {
+	setTimeout(function() {
+		callback('done!');
 	}, 2000);
-};
+}
 
-const myCallback = result => {
-	console.log('message was: ', result);
-};
+function myCallback(result) {
+	console.log('result was: ', result);
+}
 
-longRunningEvent(callback);
-// => prints 'message was: done' after 2 seconds
+delayByTwoSeconds(myCallback);
+// => prints 'result was: done' after 2 seconds

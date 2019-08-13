@@ -16,6 +16,12 @@ function updateText(text) {
 	};
 }
 
+function partial(func, ...fixedArgs) {
+	return function(...otherArgs) {
+		return func(...fixedArgs, ...otherArgs);
+	};
+}
+
 const updateTextArrow = text => event => {
 	event.target.innerText = text;
 };

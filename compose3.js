@@ -1,9 +1,9 @@
 function compose(...funcs) {
 	return function(...values) {
-		let result = funcs.shift()(...values);
+		let result = funcs.pop()(...values);
 
 		while (funcs.length > 0) {
-			result = funcs.shift()(result);
+			result = funcs.pop()(result);
 		}
 
 		return result;
@@ -32,18 +32,20 @@ const longestWord = words => {
 			index,
 			length: word.length
 		}))
-		.sort((left, right) => left.length - right.length)
-		.reverse();
+		.sort((left, right) => right.length - left.length);
 
 	return words[longest[0].index];
 };
 
 const longestWordFromSentence = compose(
-	splitSentence,
-	unique,
+	longestWord,
 	filterWordsContaining('-'),
-	longestWord
+	unique,
+	splitSentence,
 );
+
+// equivalent to:
+// longestWord(filterWordsContaining('-')(unique(splitSentence(sentence))));
 
 const sentence = `In computer science, functional programming is a programming paradigm—a style 
 of building the structure and elements of computer programs—that treats 
