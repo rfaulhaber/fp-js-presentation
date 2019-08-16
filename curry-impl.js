@@ -21,3 +21,6 @@ console.log(curriedThree(1, 2, 3)); // => [ 1, 2, 3 ]
 console.log(curriedThree(1, 2)(3)); // => [ 1, 2, 3 ]
 console.log(curriedThree(1)(2, 3)); // => [ 1, 2, 3 ]
 console.log(curriedThree(1)(2)(3)); // => [ 1, 2, 3 ]
+
+const oneTwoCurried = curriedThree(1, 2); // => Function
+console.log(oneTwoCurried(10)); // [ 1, 2, 10 ]

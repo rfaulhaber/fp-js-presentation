@@ -7,6 +7,18 @@ function doSomething() {
 	state.color = 'blue';
 }
 
+function changeMyStuff(val) {
+	val.name = 'side effect';
+	val[0] = 'who knows what this does!';
+}
+
+const x = {};
+
+changeMyStuff(x);
+
+console.log(x);
+// { '0': 'who knows what this does!', name: 'side effect' }
+
 function foo(x) {
 	return x + y;
 }
@@ -32,3 +44,10 @@ const sum = impureSum(nums);
 
 console.log(nums);
 // => []
+
+
+const myArr = [1, 2, 3];
+
+function getNewValues(arr) {
+	return arr.concat(arr.map(val => val * 10));
+}
